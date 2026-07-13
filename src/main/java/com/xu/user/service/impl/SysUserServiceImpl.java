@@ -5,7 +5,7 @@ import cn.hutool.crypto.digest.DigestUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xu.admin.common.entity.Result;
 import com.xu.user.domain.dto.LoginDTO;
-import com.xu.user.domain.entity.SysUser;
+import com.xu.user.entity.SysUser;
 import com.xu.user.domain.vo.LoginVO;
 import com.xu.user.mapper.SysUserMapper;
 import com.xu.user.mapper.UserPointMapper;

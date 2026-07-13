@@ -9,6 +9,7 @@ import com.xu.user.entity.Article;
 import com.xu.user.service.IArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,9 +44,20 @@ public class ArticleController {
      * @param queryDTO
      * @return
      */
-    @GetMapping
+    @GetMapping("/list")
     public Result<Page<Article>> page(PageQueryDTO queryDTO){
         return articleService.articlePage(queryDTO);
+    }
+
+    /**
+     * 根据id获取文章详情
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public Result<Article> getArticleById(@PathVariable("id") Integer id){
+        Article article = articleService.getById(id);
+        return Result.ok(article);
     }
 
 }
