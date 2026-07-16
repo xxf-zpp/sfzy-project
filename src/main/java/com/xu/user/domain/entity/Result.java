@@ -1,7 +1,7 @@
-package com.xu.admin.common.entity;
+package com.xu.user.domain.entity;
 
 
-import com.xu.admin.common.enums.ResultCodeEnum;
+import com.xu.user.domain.enmus.ResultCodeEnum;
 import lombok.Data;
 
 @Data

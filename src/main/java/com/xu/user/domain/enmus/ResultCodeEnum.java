@@ -1,4 +1,4 @@
-package com.xu.admin.common.enums;
+package com.xu.user.domain.enmus;
 
 import lombok.Getter;
 

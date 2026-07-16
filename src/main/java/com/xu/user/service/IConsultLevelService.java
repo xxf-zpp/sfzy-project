@@ -1,6 +1,6 @@
 package com.xu.user.service;
 
-import com.xu.user.entity.ConsultLevel;
+import com.xu.user.domain.entity.ConsultLevel;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

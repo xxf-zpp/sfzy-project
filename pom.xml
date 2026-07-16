@@ -46,9 +46,17 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <!-- 标准SpringBoot测试依赖（Spring Boot 4.x 内置 JUnit Platform 6.x） -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc-test</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- JUnit Platform Launcher：Spring Boot 4.x 需显式添加，IDE 测试运行器依赖它来发现/执行测试 -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -80,7 +88,7 @@
             <version>1.0.9-202302</version>
         </dependency>
 
-        <!--swagger-->
+        <!--swagger（实体类注解用）-->
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-core</artifactId>
@@ -101,6 +109,13 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>-Xshare:off</argLine>
                 </configuration>
             </plugin>
             <plugin>

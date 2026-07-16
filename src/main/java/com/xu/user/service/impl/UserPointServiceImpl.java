@@ -1,6 +1,6 @@
 package com.xu.user.service.impl;
 
-import com.xu.user.entity.UserPoint;
+import com.xu.user.domain.entity.UserPoint;
 import com.xu.user.mapper.UserPointMapper;
 import com.xu.user.service.IUserPointService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,6 +1,6 @@
 package com.xu.user.mapper;
 
-import com.xu.user.entity.Consult;
+import com.xu.user.domain.entity.Consult;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

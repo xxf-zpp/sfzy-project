@@ -2,10 +2,10 @@ package com.xu.user.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xu.admin.common.entity.Result;
+import com.xu.user.domain.entity.Result;
 import com.xu.user.domain.dto.PageQueryDTO;
 import com.xu.user.domain.vo.ConsultVO;
-import com.xu.user.entity.Consult;
+import com.xu.user.domain.entity.Consult;
 
 /**
  * <p>

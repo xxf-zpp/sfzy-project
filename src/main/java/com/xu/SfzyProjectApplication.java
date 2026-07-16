@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SfzyProjectApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(SfzyProjectApplication.class, args);
     }
 

@@ -2,10 +2,10 @@ package com.xu.user.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xu.admin.common.entity.Result;
+import com.xu.user.domain.entity.Result;
 import com.xu.user.domain.dto.PageQueryDTO;
 import com.xu.user.domain.vo.SimArticleVO;
-import com.xu.user.entity.Article;
+import com.xu.user.domain.entity.Article;
 import com.xu.user.mapper.ArticleMapper;
 import com.xu.user.service.IArticleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,6 +1,6 @@
 package com.xu.user.mapper;
 
-import com.xu.user.entity.UserPoint;
+import com.xu.user.domain.entity.UserPoint;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Select;
 

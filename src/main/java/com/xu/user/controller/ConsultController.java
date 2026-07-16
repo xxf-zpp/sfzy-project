@@ -2,7 +2,7 @@ package com.xu.user.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xu.admin.common.entity.Result;
+import com.xu.user.domain.entity.Result;
 import com.xu.user.domain.dto.PageQueryDTO;
 import com.xu.user.domain.vo.ConsultVO;
 import com.xu.user.service.IConsultService;

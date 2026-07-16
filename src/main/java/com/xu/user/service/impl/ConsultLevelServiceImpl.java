@@ -1,6 +1,6 @@
 package com.xu.user.service.impl;
 
-import com.xu.user.entity.ConsultLevel;
+import com.xu.user.domain.entity.ConsultLevel;
 import com.xu.user.mapper.ConsultLevelMapper;
 import com.xu.user.service.IConsultLevelService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

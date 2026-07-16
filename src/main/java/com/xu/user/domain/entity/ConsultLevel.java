@@ -1,4 +1,4 @@
-package com.xu.user.entity;
+package com.xu.user.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -12,32 +12,29 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 用户积分表
+ * 咨询师等级表
  * </p>
  *
- * @author author
- * @since 2026-07-09
+ * @author xu
+ * @since 2026-07-13
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("user_point")
-@ApiModel(value="UserPoint对象", description="用户积分表")
-public class UserPoint implements Serializable {
+@TableName("consult_level")
+@ApiModel(value="ConsultLevel对象", description="咨询师等级表")
+public class ConsultLevel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "自增主键")
+    @ApiModelProperty(value = "主键ID")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "关联系统用户表sys_user.id")
-    private Integer userId;
+    @ApiModelProperty(value = "等级名称")
+    private String levelName;
 
-    @ApiModelProperty(value = "用户当前积分，新注册默认赠送积分")
-    private Integer point;
-
-    @ApiModelProperty(value = "逻辑删除：0正常，1已删除")
+    @ApiModelProperty(value = "逻辑删除：0正常，1删除")
     private Integer del;
 
 

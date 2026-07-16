@@ -1,7 +1,7 @@
 package com.xu.user.controller;
 
 
-import com.xu.admin.common.entity.Result;
+import com.xu.user.domain.entity.Result;
 import com.xu.user.domain.dto.LoginDTO;
 import com.xu.user.domain.vo.LoginVO;
 import com.xu.user.service.ISysUserService;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author author
  * @since 2026-07-09
  */
-@RestController
+@RestController(value = "userSysUserController")
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class SysUserController {
