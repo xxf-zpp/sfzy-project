@@ -1,8 +1,8 @@
 package com.xu.user.controller;
 
 
-import com.xu.user.domain.entity.Result;
 import com.xu.user.domain.dto.LoginDTO;
+import com.xu.user.domain.entity.Result;
 import com.xu.user.domain.vo.LoginVO;
 import com.xu.user.service.ISysUserService;
 import lombok.RequiredArgsConstructor;

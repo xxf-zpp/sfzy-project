@@ -1,9 +1,9 @@
 package com.xu.user.service;
 
-import com.xu.user.domain.entity.Result;
-import com.xu.user.domain.dto.LoginDTO;
-import com.xu.user.domain.entity.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xu.user.domain.dto.LoginDTO;
+import com.xu.user.domain.entity.Result;
+import com.xu.user.domain.entity.SysUser;
 import com.xu.user.domain.vo.LoginVO;
 
 /**

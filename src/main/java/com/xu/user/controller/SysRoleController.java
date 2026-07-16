@@ -7,10 +7,8 @@ import com.xu.user.domain.entity.Result;
 import com.xu.user.domain.entity.SysRole;
 import com.xu.user.service.ISysRoleService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -23,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/role")
 @RequiredArgsConstructor
+@Slf4j
 public class SysRoleController {
 
     private final ISysRoleService roleService;
@@ -36,6 +35,38 @@ public class SysRoleController {
     @GetMapping("/list")
     public Result<Page<SysRole>> getPage(PageQueryDTO queryDTO) {
         return roleService.getPage(queryDTO);
+    }
+
+    /**
+     * 新增角色
+     * @param role
+     * @return
+     */
+    @PostMapping("add")
+    public Result<?> addRole(@RequestBody SysRole role) {
+        roleService.save(role);
+        return Result.ok();
+    }
+
+    /**
+     * 根据角色名称删除没有对应用户的角色
+     * @return
+     */
+    @DeleteMapping
+    public Result<?> deleteRoleByName(String roleName) {
+        return roleService.deleteRoleByName(roleName);
+    }
+
+
+    /**
+     * 跟新角色信息
+     * @param role
+     * @return
+     */
+    @PostMapping("/update")
+    public Result<?> updateRole(@RequestBody SysRole role){
+        log.info("更新角色………………");
+        return roleService.updateRole(role);
     }
 
 }

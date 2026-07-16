@@ -17,4 +17,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface ISysRoleService extends IService<SysRole> {
 
     Result<Page<SysRole>> getPage(PageQueryDTO queryDTO);
+
+    Result<?> deleteRoleByName(String roleName);
+
+    Result<?> updateRole(SysRole role);
 }
