@@ -10,6 +10,7 @@ import com.xu.user.domain.vo.LoginVO;
 import com.xu.user.mapper.SysUserMapper;
 import com.xu.user.mapper.UserPointMapper;
 import com.xu.user.service.ISysUserService;
+import com.xu.user.utils.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import me.ihxq.projects.pna.Attribution;
 import me.ihxq.projects.pna.PhoneNumberInfo;
@@ -36,6 +37,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     private final PhoneNumberLookup phoneNumberLookup;
 
+    private final JwtUtil jwtUtil;
+
     @Override
     public Result<LoginVO> login(LoginDTO loginDTO) {
         //1.校验账号和密码是否正确
@@ -57,11 +60,15 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         //3.根据手机号获取用户地址信息
         Map<String, String> addressInfo = parsePhone(user.getMobile());
         String address = addressInfo == null ? "河南-郑州" : addressInfo.get("province") + "-" + addressInfo.get("city");
-
-        //封装vo
+        //4.生成jwt令牌
+        Map<String, Object> claim = new HashMap<>();
+        claim.put("username", user.getUsername());
+        String token = jwtUtil.createToken(Long.valueOf(user.getId()), claim);
+        //4.封装vo
         LoginVO vo = BeanUtil.copyProperties(user, LoginVO.class);
         vo.setAddress(address);
         vo.setPoint(point);
+        vo.setToken(token);
 
         return Result.ok(vo);
     }
