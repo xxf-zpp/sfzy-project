@@ -2,14 +2,12 @@ package com.xu.user.controller;
 
 
 import com.xu.user.domain.dto.LoginDTO;
+import com.xu.user.domain.dto.RegisterDTO;
 import com.xu.user.domain.entity.Result;
 import com.xu.user.domain.vo.LoginVO;
 import com.xu.user.service.ISysUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -34,6 +32,34 @@ public class SysUserController {
     @PostMapping("/login")
     public Result<LoginVO> login(@RequestBody LoginDTO loginDTO){
         return userService.login(loginDTO);
+    }
+
+    /**
+     * 退出登录
+     * @return
+     */
+    @PostMapping("/logout")
+    public Result<?> logout() {
+        return Result.ok("退出成功！");
+    }
+
+    /**
+     * 获取手机验证码
+     * @return
+     */
+    @GetMapping("/code")
+    public Result<?> getCode(RegisterDTO registerDTO) {
+        return userService.getCode(registerDTO);
+    }
+
+    /**
+     * 用户通过手机号注册账号
+     * @param registerDTO
+     * @return
+     */
+    @PostMapping("/register")
+    public Result<?> register(@RequestBody RegisterDTO registerDTO) {
+        return userService.register(registerDTO);
     }
 
 }
