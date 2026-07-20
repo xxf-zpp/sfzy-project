@@ -19,4 +19,9 @@ public class PageQueryDTO {
     //角色分页
     private String roleCode;
     private String roleName;
+
+    //用户分页
+    private String username;
+    private String nickname;
+    private String mobile;
 }

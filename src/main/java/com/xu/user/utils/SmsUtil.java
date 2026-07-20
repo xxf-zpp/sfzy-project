@@ -1,66 +1,73 @@
 package com.xu.user.utils;
 
-import com.xu.user.config.properties.SmsProperties;
-import com.xu.user.domain.entity.SmsResult;
-import jakarta.annotation.Resource;
-import org.springframework.http.*;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-
+/**
+ * 短信发送工具类（阿里云API市场）
+ */
+@Slf4j
 @Component
 public class SmsUtil {
 
-    @Resource
-    private RestTemplate restTemplate;
+    @Value("${aliyun.sms.host}")
+    private String host;
 
-    @Resource
-    private SmsProperties smsProperties;
+    @Value("${aliyun.sms.path}")
+    private String path;
+
+    @Value("${aliyun.sms.app-code}")
+    private String appCode;
+
+    @Value("${aliyun.sms.template-id}")
+    private String templateId;
+
+    @Value("${aliyun.sms.content-prefix:code:}")
+    private String contentPrefix;
+
+    private final RestTemplate restTemplate;
+
+    public SmsUtil(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     /**
      * 发送短信验证码
-     * @param mobile 接收手机号
-     * @param code 验证码数字
-     * @return 短信发送结果
+     *
+     * @param phoneNumber 手机号
+     * @param code        验证码
+     * @return true 发送成功，false 发送失败
      */
-    public SmsResult sendVerifyCode(String mobile, String code) {
-        SmsResult result = new SmsResult();
+    public boolean sendSms(String phoneNumber, String code) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "APPCODE " + appCode);
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+        body.add("content", contentPrefix + code);
+        body.add("template_id", templateId);
+        body.add("phone_number", phoneNumber);
+
         try {
-            // 1. 拼接完整请求地址
-            String url = smsProperties.getHost() + smsProperties.getPath();
-
-            // 2. 请求头设置
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("Authorization", "APPCODE " + smsProperties.getAppCode());
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-            // 3. 表单请求参数
-            MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
-            body.add("mobile", mobile);
-            body.add("templateId", smsProperties.getTemplateId());
-            body.add("value", code);
-
-            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(body, headers);
-
-            // 4. 发起POST请求
             ResponseEntity<String> response = restTemplate.exchange(
-                    url,
+                    host + path,
                     HttpMethod.POST,
-                    request,
-                    String.class
-            );
-
-            String responseBody = response.getBody();
-            result.setRawResponse(responseBody);
-            result.setSuccess(true);
-            result.setMsg("短信发送成功");
+                    new HttpEntity<>(body, headers),
+                    String.class);
+            log.info("短信发送成功，手机号：{}，响应：{}", phoneNumber, response.getBody());
+            return true;
         } catch (Exception e) {
-            result.setSuccess(false);
-            result.setMsg("短信发送失败：" + e.getMessage());
-            e.printStackTrace();
+            log.error("短信发送失败，手机号：{}", phoneNumber, e);
+            return false;
         }
-        return result;
     }
 }

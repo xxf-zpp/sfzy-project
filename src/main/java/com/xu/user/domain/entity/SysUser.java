@@ -2,6 +2,7 @@ package com.xu.user.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -54,6 +55,7 @@ public class SysUser implements Serializable {
     private String avatar;
 
     @ApiModelProperty(value = "是否删除：0正常，1删除")
+    @TableLogic
     private Boolean del;
 
 

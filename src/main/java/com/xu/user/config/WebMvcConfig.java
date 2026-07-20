@@ -21,7 +21,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns(
                         "/user/login",
                         "/user/logout",
-                        "/user/code"
+                        "/user/code",
+                        "/user/register"
                 );
     }
 }

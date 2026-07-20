@@ -2,6 +2,7 @@ package com.xu.user.mapper;
 
 import com.xu.user.domain.entity.SysRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 /**
@@ -21,4 +22,7 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
      */
     @Select("select r.role_name from sys_user u join sys_user_role ur on u.id = ur.user_id join sys_role r on ur.role_id = r.id where u.id = #{id}")
     String getRoleNameByUserId(Integer id);
+
+    @Insert("insert into sys_user_role (user_id, role_id) values (#{userId},#{roleId})")
+    void addUserAndRole(Integer userId, Long roleId);
 }

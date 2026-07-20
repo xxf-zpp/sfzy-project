@@ -11,21 +11,6 @@
     <groupId>com.xu</groupId>
     <artifactId>sfzy-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sfzy-project</name>
-    <description>sfzy-project</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -124,6 +109,13 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+        <!-- 阿里OSS -->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.17.0</version>
         </dependency>
 
     </dependencies>

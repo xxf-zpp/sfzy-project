@@ -26,5 +26,12 @@ public class UserContext {
 
     public final static Long CODE_TTL = 5L;
 
-    public final static String DEF_AVATAR = "https://cravatar.cn/wp-content/uploads/sites/9/2021/07/4.png";
+    public final static String DEF_AVATAR = "https://sky-toke-xxf.oss-cn-beijing.aliyuncs.com/%E5%92%A8%E8%AF%A2%E5%B8%88%E5%A4%B4%E5%83%8F/VCG41N2150162066.webp";
+
+    public final static String DEF_SALT = "hualan";
+
+    public final static String DEF_USER_PWD = "123456";
+
+    public final static Long DEF_ROLE = 19L;
+
 }

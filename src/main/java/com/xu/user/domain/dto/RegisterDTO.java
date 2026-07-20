@@ -8,4 +8,5 @@ public class RegisterDTO {
     private String code;
     private String userpwd;
     private String reuserpwd;
+    private String email;
 }
